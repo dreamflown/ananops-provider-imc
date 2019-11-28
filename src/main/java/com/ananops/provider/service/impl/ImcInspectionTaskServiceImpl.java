@@ -245,4 +245,5 @@ public class ImcInspectionTaskServiceImpl implements ImcInspectionTaskService {
         imcInspectionTask.setMaintenanceCost(maintenanceCost);
         return imcInspectionTaskMapper.updateByPrimaryKey(imcInspectionTask);
     }
+
 }

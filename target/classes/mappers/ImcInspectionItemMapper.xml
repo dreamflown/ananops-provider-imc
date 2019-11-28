@@ -28,5 +28,6 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="device_latitude" property="deviceLatitude" jdbcType="DECIMAL" />
     <result column="device_longitude" property="deviceLongitude" jdbcType="DECIMAL" />
+    <result column="device_type" property="deviceType" jdbcType="VARCHAR" />
   </resultMap>
 </mapper>

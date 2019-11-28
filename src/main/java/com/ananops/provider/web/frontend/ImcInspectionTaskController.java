@@ -21,8 +21,8 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping(value = "/inspectionTask",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-@Api(value = "WEB - ImcTest",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class ImcInspectionTaskHandler {
+@Api(value = "WEB - ImcInspectionTask",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+public class ImcInspectionTaskController {
     @Resource
     ImcInspectionTaskService imcInspectionTaskService;
 
@@ -30,7 +30,7 @@ public class ImcInspectionTaskHandler {
     @ApiOperation(httpMethod = "POST",value = "新增一条巡检任务记录")
     public Wrapper<String> saveInspectionTask(@ApiParam(name = "saveInspectionTask",value = "新增一条巡检任务记录")@RequestBody ImcAddInspectionTaskDto imcAddInspectionTaskDto){
         ImcInspectionTask imcInspectionTask = new ImcInspectionTask();
-        BeanUtils.copyProperties(imcAddInspectionTaskDto,imcInspectionTask);
+        BeanUtils.copyProperties(imcAddInspectionTaskDto,imcInspectionTask);//根据合同的信息填充巡检工单的基本信息
         imcInspectionTaskService.addTask(imcInspectionTask);
         return WrapMapper.ok("巡检任务创建成功");
     }
@@ -72,36 +72,41 @@ public class ImcInspectionTaskHandler {
 
     @PostMapping(value = "/setScheduledStartTime/{taskId}/{scheduledStartTime}")
     @ApiOperation(httpMethod = "POST",value = "根据任务的ID，配置当前任务的预计开始时间")
-    public Wrapper<String> setScheduledStartTimeByTaskId(@PathVariable Long taskId, @PathVariable Date scheduledStartTime){
-        imcInspectionTaskService.setScheduledStartTimeByTaskId(taskId,scheduledStartTime);
+    public Wrapper<String> setScheduledStartTimeByTaskId(@PathVariable Long taskId, @PathVariable Long scheduledStartTime){
+        Date time = new Date(scheduledStartTime*1000);
+        imcInspectionTaskService.setScheduledStartTimeByTaskId(taskId,time);
         return WrapMapper.ok("设置巡检任务的计划起始时间成功");
     }
 
     @PostMapping(value = "/setScheduledFinishTime/{taskId}/{scheduledFinishTime}")
     @ApiOperation(httpMethod = "POST",value = "根据任务的ID，配置当前任务的预计完成时间")
-    public Wrapper<String> setScheduledFinishTimeByTaskId(@PathVariable Long taskId, @PathVariable Date scheduledFinishTime){
-        imcInspectionTaskService.setScheduledFinishTimeByTaskId(taskId,scheduledFinishTime);
+    public Wrapper<String> setScheduledFinishTimeByTaskId(@PathVariable Long taskId, @PathVariable Long scheduledFinishTime){
+        Date time = new Date(scheduledFinishTime*1000);
+        imcInspectionTaskService.setScheduledFinishTimeByTaskId(taskId,time);
         return WrapMapper.ok("设置巡检任务的计划完成时间成功");
     }
 
     @PostMapping(value = "/setActualStartTime/{taskId}/{actualStartTime}")
     @ApiOperation(httpMethod = "POST",value = "根据任务的ID，配置当前任务的实际开始时间")
-    public Wrapper<String> setActualStartTimeByTaskId(@PathVariable Long taskId, @PathVariable Date actualStartTime){
-        imcInspectionTaskService.setActualStartTimeByTaskId(taskId,actualStartTime);
+    public Wrapper<String> setActualStartTimeByTaskId(@PathVariable Long taskId, @PathVariable Long actualStartTime){
+        Date time = new Date(actualStartTime*1000);
+        imcInspectionTaskService.setActualStartTimeByTaskId(taskId,time);
         return WrapMapper.ok("设置巡检任务的实际起始时间成功");
     }
 
     @PostMapping(value = "/setActualFinishTime/{taskId}/{actualFinishTime}")
     @ApiOperation(httpMethod = "POST",value = "根据任务的ID，配置当前任务的实际结束时间")
-    public Wrapper<String> setActualFinishTimeByTaskId(@PathVariable Long taskId, @PathVariable Date actualFinishTime){
-        imcInspectionTaskService.setActualFinishTimeByTaskId(taskId,actualFinishTime);
+    public Wrapper<String> setActualFinishTimeByTaskId(@PathVariable Long taskId, @PathVariable Long actualFinishTime){
+        Date time = new Date(actualFinishTime*1000);
+        imcInspectionTaskService.setActualFinishTimeByTaskId(taskId,time);
         return WrapMapper.ok("设置巡检任务的实际完成时间成功");
     }
 
     @PostMapping(value = "/setDeadline/{taskId}/{deadline}")
     @ApiOperation(httpMethod = "POST",value = "根据任务的ID，配置当前任务最迟结束时间")
-    public Wrapper<String> setDeadlineByTaskId(@PathVariable Long taskId, @PathVariable Date deadline){
-        imcInspectionTaskService.setDeadlineByTaskId(taskId,deadline);
+    public Wrapper<String> setDeadlineByTaskId(@PathVariable Long taskId, @PathVariable Long deadline){
+        Date time = new Date(deadline*1000);
+        imcInspectionTaskService.setDeadlineByTaskId(taskId,time);
         return WrapMapper.ok("设置巡检任务的最迟完成时间成功");
     }
 

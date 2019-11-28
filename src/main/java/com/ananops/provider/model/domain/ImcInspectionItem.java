@@ -100,4 +100,10 @@ public class ImcInspectionItem extends BaseEntity {
     @Column(name = "device_longitude")
     private BigDecimal deviceLongitude;
 
+    /**
+     * 被巡检设备的类型
+     */
+    @Column(name = "device_type")
+    private String deviceType;
+
 }

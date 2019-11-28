@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by rongshuai on 2019/11/27 19:39
@@ -42,5 +43,23 @@ public class ImcAddInspectionTaskDto implements Serializable {
      */
     @ApiModelProperty(value = "任务当前状态")
     private Integer status;
+
+    /**
+     * 计划开始时间
+     */
+    @ApiModelProperty(value = "计划开始时间")
+    private Date scheduledStartTime;
+
+    /**
+     * 计划完成时间
+     */
+    @ApiModelProperty(value = "计划完成时间")
+    private Date scheduledFinishTime;
+
+    /**
+     * 最迟完成时间
+     */
+    @ApiModelProperty(value = "最迟完成时间")
+    private Date deadline;
 
 }

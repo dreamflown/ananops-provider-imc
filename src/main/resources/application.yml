@@ -11,7 +11,7 @@ spring:
   cache:
     cache-names: mdm-cache
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/ananops_imc?characterEncoding=utf8&useSSL=false&serverTimezone=GMT
+    url: jdbc:mysql://127.0.0.1:3306/ananops_imc?characterEncoding=utf8&useSSL=false&serverTimezone=GMT&zeroDateTimeBehavior=convertToNull
     username: root
     password: 123456
 pagehelper:

@@ -1,8 +1,10 @@
 package com.ananops.provider.model.domain;
 
 import com.ananops.provider.model.base.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -57,18 +59,24 @@ public class ImcInspectionTask extends BaseEntity {
      * 计划起始时间
      */
     @Column(name = "scheduled_start_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date scheduledStartTime;
 
     /**
      * 实际开始时间
      */
     @Column(name = "actual_start_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date actualStartTime;
 
     /**
      * 计划完成时间
      */
     @Column(name = "scheduled_finish_time")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date scheduledFinishTime;
 
     /**
@@ -80,6 +88,8 @@ public class ImcInspectionTask extends BaseEntity {
     /**
      * 最迟完成时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date deadline;
 
     /**
